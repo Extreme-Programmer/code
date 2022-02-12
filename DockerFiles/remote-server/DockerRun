@@ -1,0 +1,8 @@
+ssh-keygen -t rsa -m PEM -f id_rsa
+
+docker ./Dockerfile #
+
+docker build -t remote_server .
+docker run -d --name remote_server -it -p 58897:22 remote-server
+ssh remote_user@localhost -p 58897
+ssh -i id_rsa remote_user@localhost -p 58897
